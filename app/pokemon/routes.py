@@ -4,8 +4,10 @@ import requests as r
 
 pokemon = Blueprint('pokemon', __name__, template_folder="pokemon_templates")
 
+
 from app.models import db, Pokemon, Pokedex
 from .forms import CreatePokemonForm
+
 
 
 @pokemon.route('/pokemon', methods=["POST"])
@@ -68,3 +70,4 @@ def addToPokedex(pokemon_id):
     else: 
         print(f"That Pokemon was already in your Pokedex!")
         return redirect(url_for('home'))
+

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <br>
 <h2 style="text-align:center; margin-left:auto; margin-right:auto;">
     Welcome to David's Week 6 Day 2 HW!
@@ -12,6 +13,7 @@
     If you already have an account and are signed in, search for a Pokemon using the searchbar and then hit add to Pokedex.
     If you aren't signed in, the "Add to Pokedex" button will not show up.
 </h5>
+
         {% for post in posts %}
             <a href='{{ url_for("ig.individualPost", post_id=post.id) }}' class="card" style="width: 18rem;">
                 <img src="{{ post.image }}" class="card-img-top" alt="{{ post.title }}">

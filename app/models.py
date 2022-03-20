@@ -14,7 +14,9 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(250), nullable=False)
     post = db.relationship('Post', backref='author', lazy=True)
     cart_item = db.relationship('Cart', backref='cart_user', lazy=True)
+
     pokedex_pokemon = db.relationship('Pokedex', backref='pokedex_user', lazy=True)
+
     is_admin = db.Column(db.Boolean, default=False)
 
     def __init__(self, username, email, password, is_admin=False):
@@ -79,10 +81,12 @@ class Pokemon(db.Model):
     ability2 = db.Column(db.String(300))
     pokedex_pokemon = db.relationship('Pokedex', backref='pokedex_pokemon', lazy=True)
 
+
     def __init__(self, pokemon_name, img_url, ability1, ability2):
         self.pokemon_name = pokemon_name
         self.img_url = img_url
         self.ability1 = ability1
+
         self.ability2 = ability2
 
     def to_dict(self):
@@ -92,7 +96,8 @@ class Pokemon(db.Model):
             "img_url": self.img_url,
             "ability1": self.ability1,
             "ability2": self.ability2
-                    }
+        }
+
 
 class Pokedex(db.Model):
     id = db.Column(db.Integer, primary_key=True)
