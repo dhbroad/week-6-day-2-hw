@@ -59,7 +59,12 @@ def showPokedex():
 @pokemon.route('/pokedex/add/<int:pokemon_id>') # for adding from a list of pokemon
 def addToPokedex(pokemon_id):
     pokedex_pokemon = Pokedex(current_user.id, pokemon_id)
-    db.session.add(pokedex_pokemon)
-    db.session.commit()
-    print(f"Pokemon added to Pokedex successfully!")
-    return redirect(url_for('home'))
+    pokedex = Pokedex.query.filter_by(pokemon_id=pokemon_id).first()
+    if pokedex is None:
+        db.session.add(pokedex_pokemon)
+        db.session.commit()
+        print(f"Pokemon added to Pokedex successfully!")
+        return redirect(url_for('home'))
+    else: 
+        print(f"That Pokemon was already in your Pokedex!")
+        return redirect(url_for('home'))

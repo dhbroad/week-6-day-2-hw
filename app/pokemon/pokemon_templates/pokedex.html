@@ -10,9 +10,9 @@
                         <li class="list-group item">
                                 <img src="{{ apokemon.img_url }}" class="card-img-top" alt="{{ apokemon.pokemon_name }}">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ apokemon.pokemon_name }}</h5>
-                                    <p class="card-text">{{ apokemon.ability1 }}</p>
-                                    <p class="card-text">{{ apokemon.ability2 }}</p>
+                                    <h5 class="card-title">{{ apokemon.pokemon_name|capitalize }}</h5>
+                                    <p class="card-text">Ability 1: {{ apokemon.ability1|capitalize }}</p>
+                                    <p class="card-text">Ability 2: {{ apokemon.ability2|capitalize }}</p>
                                 </div>
                             </a>
                          </li>
